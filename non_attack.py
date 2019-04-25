@@ -129,10 +129,11 @@ def load_images_no_label(input_dir, batch_shape):
 
 def save_ijcai_images(images, filenames, output_dir):
     for i, filename in enumerate(filenames):
-        image = (((images[i] + 1.0) * 0.5) * 255.0).astype(np.uint8)
+        with open(os.path.join(output_dir, filename),'w') as f:
+            image = (((images[i] + 1.0) * 0.5) * 255.0).astype(np.uint8)
         # resize back to [299, 299]
-        image = imresize(image, [299, 299])
-        Image.fromarray(image).save(os.path.join(output_dir, filename), format='PNG')
+            image = imresize(image, [299, 299])
+            Image.fromarray(image).save(f, format='PNG')
         # print('{} image saved'.format(os.path.join(output_dir, filename)))
 
 
