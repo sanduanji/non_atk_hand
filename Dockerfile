@@ -1,4 +1,4 @@
-ROM nvidia/cuda
+FROM nvidia/cuda
 MAINTAINER cutrain <duanyuge@qq.com>
 RUN apt-get update
 RUN apt-get install -y python3-dev python3-pip
