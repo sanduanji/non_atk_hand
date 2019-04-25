@@ -103,7 +103,7 @@ def load_images_no_label(input_dir, batch_shape):
     idx = 0
     widgets = ['save_atk_image:', Percentage(), ' ',Bar('*'),' ',Timer(), ' ', ETA(), ' ', FileTransferSpeed()]
     pbar = ProgressBar(widgets=widgets)
-    for filepath in pbar(tf.gfile.Glob(os.path.join(input_dir, '*.jpg'))):
+    for filepath in pbar(tf.gfile.Glob(os.path.join(input_dir, '*.png'))):
         # image = imread(filepath, mode='RGB').astype(np.float) / 255.0
         image = Image.open(filepath)
         image = image.resize((224,224), Image.BILINEAR)
