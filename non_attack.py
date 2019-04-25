@@ -103,7 +103,7 @@ def load_images_no_label(input_dir, batch_shape):
     idx = 0
     widgets = ['save_atk_image:', Percentage(), ' ',Bar('*'),' ',Timer(), ' ', ETA(), ' ', FileTransferSpeed()]
     pbar = ProgressBar(widgets=widgets)
-    for filepath in pbar(tf.gfile.Glob(os.path.join(input_dir, '*.png'))):
+    for filepath in pbar(tf.gfile.Glob(os.path.join(input_dir, '*.jpg'))):
         # image = imread(filepath, mode='RGB').astype(np.float) / 255.0
         image = Image.open(filepath)
         image = image.resize((224,224), Image.BILINEAR)
@@ -200,7 +200,7 @@ def non_attack(input_dir, output_dir):
     batch_shape = [FLAGS.batch_size, 224, 224, 3]
     n_gpus = len(gpus)
     # processed_img =
-    all_imgs = glob.glob(os.path.join(FLAGS.input_dir, '/*/*.jpg'))
+    all_imgs = glob.glob(os.path.join(FLAGS.input_dir, '*.jpg'))
 
     with tf.Graph().as_default():
         raw_inputs = tf.placeholder(tf.uint8, shape=[None, 224, 224, 3])
